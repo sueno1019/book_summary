@@ -8,7 +8,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Book from 'book/book.vue'
+import Book from 'book/book-index.vue'
 
 const router = new VueRouter({
   routes: [
