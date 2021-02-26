@@ -1,8 +1,10 @@
 <template>
-    <div>
-        <ul>
+    <div class="main-content">
+      <div class="wrapper">
+        <ul class="book-list">
           <BookList v-for="book in books" :key="book.id" :book-item="book"></BookList>            
         </ul>
+      </div>
     </div>
 </template>
 
@@ -26,3 +28,24 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.main-content{
+  display: flex;
+  width:100%;
+  padding-top:50px;
+  margin: 0 auto;
+  /* background-color: limegreen; */
+  align-items: stretch;
+}
+.wrapper{
+  min-width:1000px;
+  padding: 1em 3em;
+  /* background-color: orangered; */
+  margin: 0 auto;
+}
+.book-list{
+  text-align: left;
+  max-width: 100%;
+}
+</style>

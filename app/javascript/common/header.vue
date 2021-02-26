@@ -32,7 +32,6 @@ export default {
   width: 100%;
   height: 80px;
   border-style: solid;  
-  border-color: limegreen;
 }
 
 

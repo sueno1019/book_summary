@@ -7,13 +7,16 @@
 <script>
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
+import Section from 'section/section-index'
 import Book from 'book/book-index.vue'
 
 const router = new VueRouter({
   routes: [
     { path: '/',
-      component: Book  }
+      component: Book },
+    { path: '/section/:id(\\d+)',
+      name: 'Section',
+      component: Section }
   ]
 })
 
@@ -25,5 +28,3 @@ export default {
 }
 </script>
 
-<style scoped>
-</style>

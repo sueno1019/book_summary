@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Header></Header>
-    <Main />
+    <Header class="header"></Header>
+    <Main class="main"></Main>
   </div>
 </template>
 
@@ -17,6 +17,12 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style  scoped>
+.main{
+  width:100%;
+  background-color: #a7d7c5;
+}
+.header{
+   background-color: #757575;
+}
 </style>
