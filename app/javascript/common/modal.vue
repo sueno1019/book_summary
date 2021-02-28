@@ -5,7 +5,7 @@
             <div class="modal-container">
 
               <div class="modal-header">
-                <slot name="header">
+                <slot name="title">
                   default header
                 </slot>
               </div>
@@ -15,15 +15,12 @@
                   default body
                 </slot>
               </div>
-
-              <div class="modal-footer">
-                <slot name="footer">
-                  default footer
-                  <button class="modal-default-button" @click="$emit('next')">
-                    次へ
-                  </button>
-                </slot>
-              </div>
+              <button class="modal-default-button" @click="$emit('next')">
+                    <slot name="button">次へ</slot>
+              </button>
+              <button class="modal-default-button close-button" @click="$emit('close')">
+                    <slot name="close-button">閉じる</slot>
+              </button>
             </div>
           </div>
         </div>   
@@ -49,9 +46,9 @@
 }
 
 .modal-container {
-  width: 300px;
+  width: 800px;
   margin: 0px auto;
-  padding: 20px 30px;
+  padding: 20px 50px;
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
@@ -70,6 +67,9 @@
 
 .modal-default-button {
   float: right;
+}
+.close-button{
+  padding-right: 24px;
 }
 
 .modal-enter {

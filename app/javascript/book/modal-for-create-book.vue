@@ -1,18 +1,34 @@
 <template>
-    <v-app>
-        <div class="n-btn">
-            <v-btn color="light-green" elevation="10" @click="showModal=true">
-                <slot name="button">new book</slot>
-            </v-btn>
-            <BookModal v-if="showModal" @next="showNextModal=true,showModal=false" @close="showModal=false" />            
-            <PreinfoModal v-if="showNextModal" @next="showNextModal=false" @close="showModal=false, showNextModal=false" />
-        </div>
-    </v-app>
+    <Modal @next="$emit('next')" @close="$emit('close')">
+        <template v-slot:body>
+            <form @submit.prevent="createBook">
+                <!-- <div v-if="errors.length != 0">
+                    <ul v-for="e in errors" :key="e">
+                        <li><font color="red">{{ e }}</font></li>
+                    </ul>
+                </div> -->
+                <div class="group">
+                    <label for="title" id="l_title">タイトル</label>
+                    <input class="input" type="text" placeholder="タイトルを入力する">
+                    <div class="text_underline"></div>
+                </div>
+                <div class="group">
+                    <label for="author" id="l_author">著者</label>
+                    <input class="input" type="text" placeholder="著者を入力する">
+                    <div class="text_underline"></div>
+                </div>
+                <div class="group">
+                    <label for="image" id="l_title">表紙</label>
+                    <input class="input" type="file" accept="image/*">
+                    <div class="text_underline"></div>
+                </div>
+            </form>
+        </template>
+    </Modal>
 </template>
 
 <script>
-import BookModal from "../book/modal-for-create-book"
-import PreinfoModal from "../book/modal-for-create-preinfo"
+import Modal from "/app/javascript/common/modal"
 
 export default {
     data: function () {
@@ -22,19 +38,12 @@ export default {
     }
     },
     components:{
-        BookModal,
-        PreinfoModal 
+        Modal,
     }
-
 }
 </script>
 
 <style scoped>
-.n-btn{
-    position: absolute;
-    top: 20px;
-    right: 40px;
-}
 .input{
     font-size: 16px;
     width: 100%;
@@ -78,4 +87,3 @@ export default {
     width: 100%;
 }
 </style>
-

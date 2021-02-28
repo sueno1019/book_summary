@@ -1,40 +1,27 @@
 <template>
-    <v-app>
-        <div class="n-btn">
-            <v-btn color="light-green" elevation="10" @click="showModal=true">
-                <slot name="button">new book</slot>
-            </v-btn>
-            <BookModal v-if="showModal" @next="showNextModal=true,showModal=false" @close="showModal=false" />            
-            <PreinfoModal v-if="showNextModal" @next="showNextModal=false" @close="showModal=false, showNextModal=false" />
-        </div>
-    </v-app>
+    <Modal @next="$emit('next')" @close="$emit('close')">
+        <template v-slot:body>
+            <form>
+                <label>内容</label>       
+                <input class="input" type="text" placeholder="得たい情報">
+                <div class="text_underline"></div>
+            </form>
+        </template>
+        <template v-slot:button>登録</template> 
+    </Modal>
 </template>
 
 <script>
-import BookModal from "../book/modal-for-create-book"
-import PreinfoModal from "../book/modal-for-create-preinfo"
+import Modal from "/app/javascript/common/modal"
 
 export default {
-    data: function () {
-    return {
-      showModal: false,
-      showNextModal: false,
+    components: {
+        Modal
     }
-    },
-    components:{
-        BookModal,
-        PreinfoModal 
-    }
-
 }
 </script>
 
 <style scoped>
-.n-btn{
-    position: absolute;
-    top: 20px;
-    right: 40px;
-}
 .input{
     font-size: 16px;
     width: 100%;
@@ -78,4 +65,3 @@ export default {
     width: 100%;
 }
 </style>
-
