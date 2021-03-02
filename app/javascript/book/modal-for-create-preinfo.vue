@@ -1,22 +1,54 @@
 <template>
-    <Modal @next="$emit('next')" @close="$emit('close')">
+    <Modal>
         <template v-slot:body>
-            <form>
-                <label>内容</label>       
-                <input class="input" type="text" placeholder="得たい情報">
+            <form @submit.prevent="createPreinfo">
+                <div>
+                    <label for="question">内容</label>       
+                    <input class="input" type="text" placeholder="得たい情報" v-model="pre_info.question" required>
+                </div>
                 <div class="text_underline"></div>
+                    <button class="modal-default-button" @click="$emit('next')" type="submit">
+                        <slot name="button">登録</slot>
+                    </button>
+                    <button class="modal-default-button close-button" @click="$emit('close')">
+                        <slot name="close-button">閉じる</slot>
+                    </button> 
             </form>
         </template>
-        <template v-slot:button>登録</template> 
     </Modal>
 </template>
 
 <script>
+import axios from 'axios'
 import Modal from "/app/javascript/common/modal"
 
 export default {
+    data: function(){
+        return {
+            pre_info: {
+                question: ""
+            }
+        }
+    },
     components: {
         Modal
+    },
+    methods: {
+         checkForm: function () {
+            if (this.name && this.age) {
+            return true;
+            }
+        },
+        creatPreinfo: function(){
+            axios
+                .post('api/v1/preinfo.json', this.pre_info)
+                .catch(error => {
+                    console.error(error);
+                    if (error.response.data && error.response.data.errors) {
+                        this.errors = error.response.data.errors;
+                    }
+                });
+        }
     }
 }
 </script>
@@ -63,5 +95,13 @@ export default {
 
 .input:focus + .text_underline::before{
     width: 100%;
+}
+.modal-default-button {  
+    float: right;
+    padding-top: 20px;
+}
+.close-button{
+    padding-right: 24px;
+    padding-top: 20px;
 }
 </style>

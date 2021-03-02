@@ -6,7 +6,7 @@
 
               <div class="modal-header">
                 <slot name="title">
-                  default header
+                  <h2>本の情報</h2>
                 </slot>
               </div>
 
@@ -15,12 +15,6 @@
                   default body
                 </slot>
               </div>
-              <button class="modal-default-button" @click="$emit('next')">
-                    <slot name="button">次へ</slot>
-              </button>
-              <button class="modal-default-button close-button" @click="$emit('close')">
-                    <slot name="close-button">閉じる</slot>
-              </button>
             </div>
           </div>
         </div>   
