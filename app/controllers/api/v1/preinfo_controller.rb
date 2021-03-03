@@ -16,7 +16,7 @@ class Api::V1::PreinfoController < ApplicationController
       if preinfo.save
         render json: preinfo, status: :created
       else
-        render json: { errors: employee.errors.full_messages }, status: :unprocessable_entity
+        render json: { errors: preinfo.errors.full_messages }, status: :unprocessable_entity
       end
     end
   
@@ -27,7 +27,7 @@ class Api::V1::PreinfoController < ApplicationController
     end
   
     def preinfo_params
-      params.fetch(:preinfo, {}).permit(:title, :author, :image)
+      params.fetch(:preinfo, {}).permit(:book_id, :question)
     end
   
     def render_status_404(exception)

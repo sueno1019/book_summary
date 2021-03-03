@@ -16,7 +16,7 @@ class Api::V1::BookController < ApplicationController
     if book.save
       render json: book, status: :created
     else
-      render json: { errors: employee.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: book.errors.full_messages }, status: :unprocessable_entity
     end
   end
 

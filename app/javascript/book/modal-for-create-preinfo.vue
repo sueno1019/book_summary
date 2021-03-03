@@ -4,7 +4,7 @@
             <form @submit.prevent="createPreinfo">
                 <div>
                     <label for="question">内容</label>       
-                    <input class="input" type="text" placeholder="得たい情報" v-model="pre_info.question" required>
+                    <input class="input" type="text" placeholder="得たい情報" v-model="preinfo.question" required>
                 </div>
                 <div class="text_underline"></div>
                     <button class="modal-default-button" @click="$emit('next')" type="submit">
@@ -25,7 +25,8 @@ import Modal from "/app/javascript/common/modal"
 export default {
     data: function(){
         return {
-            pre_info: {
+            preinfo: {
+                book_id: 1, 
                 question: ""
             }
         }
@@ -39,9 +40,9 @@ export default {
             return true;
             }
         },
-        creatPreinfo: function(){
+        createPreinfo: function(){
             axios
-                .post('api/v1/preinfo.json', this.pre_info)
+                .post('api/v1/preinfo.json', this.preinfo)
                 .catch(error => {
                     console.error(error);
                     if (error.response.data && error.response.data.errors) {

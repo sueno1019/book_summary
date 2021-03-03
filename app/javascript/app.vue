@@ -11,6 +11,8 @@ import Section from 'section/section-index'
 import Book from 'book/book-index.vue'
 
 const router = new VueRouter({
+  mode: 'history',
+  base: '/',
   routes: [
     { path: '/',
       component: Book },
