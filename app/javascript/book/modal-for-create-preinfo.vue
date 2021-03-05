@@ -7,9 +7,11 @@
                     <input class="input" type="text" placeholder="得たい情報" v-model="preinfo.question" required>
                 </div>
                 <div class="text_underline"></div>
-                    <button class="modal-default-button" @click="$emit('next')" type="submit">
-                        <slot name="button">登録</slot>
-                    </button>
+                    <router-link :to="{name: 'Section', params: {id: preinfo.book_id}}">
+                        <button class="modal-default-button" type="submit">
+                            <slot name="button">登録</slot>
+                        </button>
+                    </router-link>
                     <button class="modal-default-button close-button" @click="$emit('close')">
                         <slot name="close-button">閉じる</slot>
                     </button> 
@@ -49,6 +51,9 @@ export default {
                         this.errors = error.response.data.errors;
                     }
                 });
+        },
+        redirect: function(){
+               window.location = "/part";    
         }
     }
 }

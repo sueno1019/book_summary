@@ -9,16 +9,20 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Section from 'section/section-index'
 import Book from 'book/book-index.vue'
+import Part from 'part/part-index'
 
 const router = new VueRouter({
-  mode: 'history',
-  base: '/',
+  // mode: 'history',
+  // base: '/',
   routes: [
     { path: '/',
       component: Book },
     { path: '/section/:id(\\d+)',
       name: 'Section',
-      component: Section }
+      component: Section },
+    { path: '/part/:id(\\d+)',
+      name: 'Part',
+      component: Part },
   ]
 })
 

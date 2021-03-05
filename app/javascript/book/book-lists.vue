@@ -5,7 +5,7 @@
         </div>
         <div class="book-info">
             <div class="book-title">
-                <router-link  :to="{name: 'Section', params: {id: bookItem.id}}" v-on:click.native="doSomething()">
+                <router-link  :to="{name: 'Section', params: {id: bookItem.id}}">
                     {{bookItem.title}}
                 </router-link>
             </div>

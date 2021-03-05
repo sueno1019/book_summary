@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 
+  sec_num: 
+  sec_sum: MyText
+
+two:
+  name: 
+  sec_num: 
+  sec_sum: MyText

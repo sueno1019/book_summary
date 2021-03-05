@@ -1,8 +1,10 @@
 <template>
     <div class="main-content">
       <div class="wrapper">
-        <ul class="book-list">
-          <BookList v-for="book in books" :key="book.id" :book-item="book"></BookList>            
+        <ul class="list">
+          <slot name="list">
+            <BookList v-for="book in books" :key="book.id" :book-item="book" />           
+          </slot>
         </ul>
       </div>
     </div>
@@ -44,7 +46,7 @@ export default {
   /* background-color: orangered; */
   margin: 0 auto;
 }
-.book-list{
+.list{
   text-align: left;
   max-width: 100%;
 }

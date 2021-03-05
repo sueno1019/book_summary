@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import Header from '../common/header' 
-import Main from "book/main-content.vue"
+import Header from 'common/header' 
+import Main from "common/main-content"
 
 export default {
   components: {
