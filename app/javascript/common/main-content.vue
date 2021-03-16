@@ -2,9 +2,11 @@
     <div class="main-content">
       <div class="wrapper">
         <ul class="list">
-          <slot name="list">
-            <BookList v-for="book in books" :key="book.id" :book-item="book" />           
-          </slot>
+          <transition-group >
+            <slot name="list">
+                <BookList v-for="book in books" :key="book.id" :book-item="book" />
+            </slot>
+          </transition-group>
         </ul>
       </div>
     </div>

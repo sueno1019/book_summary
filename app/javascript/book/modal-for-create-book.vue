@@ -68,9 +68,7 @@ export default {
         },
         createImage(image) {
             const reader = new FileReader()
-            // imageをreaderにDataURLとしてattachする
             reader.readAsDataURL(image)
-            // readAdDataURLが完了したあと実行される処理
             reader.onload = () => {
                 this.book.image = reader.result
             }
@@ -104,22 +102,22 @@ export default {
 .text_underline::before,
 .text_underline::after{
     position: absolute; 
-    bottom: 0px; /*中央配置*/
-    width: 0px; /*アニメーションで0pxから50%に*/
-    height: 1px; /*高さ*/
+    bottom: 0px; 
+    width: 0px; 
+    height: 1px; 
     content: '';
-    background-color: #3be5ae; /*アニメーションの色*/
+    background-color: #3be5ae; 
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
 }
 .text_underline::before{
     position: absolute; 
-    left: 0px; /*左配置 ここright: 0px;にすると右から左のアニメーション*/
-    bottom: 0px; /*左配置*/
-    width: 0px; /*アニメーションで0pxから100%に*/
-    height: 1px; /*高さ*/
+    left: 0px; 
+    bottom: 0px; 
+    width: 0px; 
+    height: 1px; 
     content: '';
-    background-color: #3be5ae; /*アニメーションの色*/
+    background-color: #3be5ae;
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
 }
